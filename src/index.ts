@@ -1,21 +1,28 @@
 import type { Linter } from "eslint";
 
-import type { TypedFlatConfigItem } from "./types";
+import { mergeConfigs } from "eslint-flat-config-utils";
 
-import config from "./config";
+import js from "./configs/js";
+import ts from "./configs/ts";
+import vitest from "./configs/vitest";
 import { configureGlobals, type GlobalsOptions } from "./globals";
+
+export const configs = {
+  js,
+  ts,
+  vitest,
+};
 
 export function defineConfig(params: {
   ignores?: string[];
   globals?: GlobalsOptions;
-  additional?: TypedFlatConfigItem[];
-}): Linter.Config {
-  const { ignores, globals, additional } = params;
+  configs: (presets: typeof configs) => Linter.Config[];
+}): Linter.Config[] {
+  const { ignores, globals } = params;
 
   return [
     ...(ignores ? [{ ignores }] : []),
     ...(globals ? [configureGlobals(globals)] : []),
-    ...config,
-    ...(additional ?? []),
-  ] satisfies TypedFlatConfigItem[] as Linter.Config;
+    mergeConfigs(...params.configs(configs)),
+  ] satisfies Linter.Config[];
 }
