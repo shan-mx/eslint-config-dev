@@ -3,7 +3,7 @@
 ## Installation
 
 ```bash
-pnpm dlx jsr add @mxdev/eslint-config
+pnpm dlx jsr add -D @mxdev/eslint-config
 ```
 
 ## Usage
