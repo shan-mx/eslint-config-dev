@@ -9,8 +9,16 @@ pnpm dlx jsr add @mxdev/eslint-config
 ## Usage
 
 ```javascript
-import mxConfig from "@mxdev/eslint-config";
+import { defineConfig } from "@mxdev/eslint-config";
 
-/** @type {import('eslint').Linter.Config[]} */
-export default [...mxConfig];
+export default defineConfig({
+  ignores: ["**/dist", "**/coverage"],
+  globals: {
+    presets: ["builtin", "es2022"],
+    custom: {
+      NodeJS: true,
+    },
+  },
+  configs: (p) => [p.js, p.ts, p.vitest],
+});
 ```

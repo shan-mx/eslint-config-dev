@@ -2,13 +2,15 @@ import type { Linter } from "eslint";
 
 import globals from "globals";
 
+export interface GlobalsOptions {
+  presets?: (keyof typeof globals)[];
+  custom?: Linter.Globals;
+}
+
 export function configureGlobals({
   presets = [],
-  additional = {},
-}: {
-  presets?: (keyof typeof globals)[];
-  additional?: Linter.Globals;
-}): Linter.Config {
+  custom = {},
+}: GlobalsOptions): Linter.Config {
   let appliedPresets: Linter.Globals = {};
 
   for (const each of presets) {
@@ -22,7 +24,7 @@ export function configureGlobals({
     languageOptions: {
       globals: {
         ...appliedPresets,
-        ...additional,
+        ...custom,
       },
     },
   };
