@@ -14,10 +14,9 @@ jobs:
       id-token: write
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
-      - name: Setup
-        uses: ./.github/actions/setup-node-environment
+      - uses: ./.github/actions/setup
 
       - name: Publish package
         run: npx jsr publish
