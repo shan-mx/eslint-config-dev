@@ -1,7 +1,5 @@
 import type { Linter } from "eslint";
 
-import { mergeConfigs } from "eslint-flat-config-utils";
-
 import js from "./configs/js";
 import ts from "./configs/ts";
 import vitest from "./configs/vitest";
@@ -25,6 +23,6 @@ export function defineConfig(params: {
   return [
     ...(ignores ? [{ ignores }] : []),
     ...(globals ? [configureGlobals(globals)] : []),
-    mergeConfigs(...params.configs(configs)),
+    ...params.configs(configs),
   ] satisfies Linter.Config[];
 }
