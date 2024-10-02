@@ -4,6 +4,7 @@
   "scripts": {
     "lint": "eslint .",
     "lint:fix": "pnpm lint --fix",
+    "typecheck": "tsc --noEmit",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\""
   },
   "devDependencies": {
