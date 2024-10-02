@@ -12,6 +12,8 @@ jobs:
   typecheck:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
+
       - name: Setup
         uses: ./.github/actions/setup-node-environment
 
@@ -22,6 +24,8 @@ jobs:
     if: ${{ github.actor != 'dependabot[bot]' }}
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
+
       - name: Setup
         uses: ./.github/actions/setup-node-environment
 
