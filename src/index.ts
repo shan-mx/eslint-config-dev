@@ -6,20 +6,12 @@ import vitest from "@vitest/eslint-plugin";
 import perfectionist from "eslint-plugin-perfectionist";
 import unicorn from "eslint-plugin-unicorn";
 import unusedImports from "eslint-plugin-unused-imports";
-import globals from "globals";
 
 import type { TypedFlatConfigItem } from "./types";
 
 const config: TypedFlatConfigItem[] = [
   {
-    ignores: ["dist", "coverage"],
-  },
-  {
-    languageOptions: {
-      globals: {
-        ...globals.builtin,
-      },
-    },
+    ignores: ["**/dist", "**/coverage"],
   },
   {
     plugins: {
@@ -134,7 +126,7 @@ const config: TypedFlatConfigItem[] = [
     },
   },
   {
-    files: ["test/**"],
+    files: ["**/test"],
     plugins: {
       vitest,
     },
