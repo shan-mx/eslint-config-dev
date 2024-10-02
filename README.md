@@ -11,5 +11,6 @@ pnpm dlx jsr add @mxdev/eslint-config
 ```javascript
 import mxConfig from "@mxdev/eslint-config";
 
+/** @type {import('eslint').Linter.Config[]} */
 export default [...mxConfig];
 ```
