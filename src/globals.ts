@@ -27,10 +27,3 @@ export function configureGlobals({
     },
   };
 }
-
-export const config = configureGlobals({
-  presets: ["applescript"],
-  additional: {
-    NodeJS: "writable",
-  },
-});
