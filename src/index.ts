@@ -7,7 +7,9 @@ import ts from "./configs/ts";
 import vitest from "./configs/vitest";
 import { configureGlobals, type GlobalsOptions } from "./globals";
 
-export const configs = {
+type ConfigPreset = "js" | "ts" | "vitest";
+
+export const configs: Record<ConfigPreset, Linter.Config> = {
   js,
   ts,
   vitest,
