@@ -15,7 +15,7 @@ jobs:
 
     steps:
       - name: Setup
-        uses: actions/setup-node-environment@main
+        uses: setup-node-environment@main
 
       - name: Publish package
         run: npx jsr publish
