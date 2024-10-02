@@ -126,7 +126,7 @@ const config: TypedFlatConfigItem[] = [
     },
   },
   {
-    files: ["**/test"],
+    files: ["**/test/*.ts", "**/test/*.tsx"],
     plugins: {
       vitest,
     },
